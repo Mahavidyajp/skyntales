@@ -25,16 +25,16 @@ const features = [
 
 const FeatureBadges = () => {
   return (
-    <section className="py-16 bg-background overflow-hidden">
-      <div className="container-kanva">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
+    <section className="py-12 sm:py-16 bg-background overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {features.map((feature) => (
             <div
               key={feature.title}
-              className="flex flex-col items-center text-center p-6 rounded-xl bg-secondary hover:shadow-kanva-md transition-shadow"
+              className="flex flex-col items-center text-center p-6 rounded-lg bg-secondary/50 hover:shadow-lg transition-shadow duration-300"
             >
-              <feature.icon className="h-8 w-8 text-sage mb-4" strokeWidth={1.5} />
-              <h3 className="font-heading text-lg mb-2">{feature.title}</h3>
+              <feature.icon className="h-8 w-8 text-primary mb-4" strokeWidth={1.5} />
+              <h3 className="font-heading text-base sm:text-lg mb-2">{feature.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {feature.description}
               </p>

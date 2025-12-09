@@ -16,12 +16,16 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <FeatureBadges />
-        <StatementSection />
-        <ProductsSection />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FeatureBadges />
+          <StatementSection />
+          <ProductsSection />
+        </div>
         <EcoFriendlySection />
         <SocialProofSection />
-        <TestimonialSection />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <TestimonialSection />
+        </div>
         <InstagramSection />
         <NewsletterSection />
       </main>

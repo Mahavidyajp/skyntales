@@ -98,22 +98,23 @@ const HeroSection = () => {
                   className="w-full h-full object-cover object-center"
                 />
               </div>
-              <div className="relative container-kanva h-full min-h-screen flex flex-col justify-center pt-24 pb-16">
-                <div className="max-w-xl">
-                  <h1 className="mb-6">
-                    <span className="block text-[clamp(3.5rem,12vw,8rem)] font-heading text-white leading-[0.9] tracking-tight">
+              <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-screen flex flex-col justify-center pt-24 pb-16">
+                <div className="max-w-md text-center sm:text-left">
+                  <h1 className="mb-4 sm:mb-6">
+                    <span className="block text-[clamp(3rem,10vw,7rem)] font-heading text-white leading-none tracking-tight">
                       {slide.title[0]}
                     </span>
-                    <span className="block text-[clamp(3.5rem,12vw,8rem)] font-heading italic text-[#b5a08e]/80 leading-[0.9] tracking-tight">
+                    <span className="block text-[clamp(3rem,10vw,7rem)] font-heading italic text-white/80 leading-none tracking-tight">
                       {slide.title[1]}
                     </span>
                   </h1>
-                  <p className="text-base md:text-lg text-white mb-10 max-w-md leading-relaxed">
+                  <p className="text-base md:text-lg text-white/90 mb-8 sm:mb-10 max-w-sm mx-auto sm:mx-0 leading-relaxed">
                     {slide.description}
                   </p>
                 </div>
               </div>
-                {/* Product Hotspots */}
+              {/* Product Hotspots - Hidden on smaller screens */}
+              <div className="hidden md:block">
                 {slide.products.map((product, productIndex) => (
                     <Popover key={productIndex}>
                         <PopoverTrigger asChild>
@@ -123,16 +124,11 @@ const HeroSection = () => {
                             />
                         </PopoverTrigger>
                         <Link to={`/shop/product/${product.id}`}>
-                            <PopoverContent>
-                                <div className="flex gap-4">
-                                <img src={product.image} alt={product.name} className="w-20 h-20 object-cover rounded-md" />
+                            <PopoverContent side="top" className="w-auto">
+                                <div className="flex gap-4 items-center">
+                                <img src={product.image} alt={product.name} className="w-16 h-16 object-cover rounded-md" />
                                 <div>
-                                    {product.discount && (
-                                    <div className="text-xs font-bold bg-red-500 text-white rounded-full px-2 py-1 inline-block mb-1">
-                                        {product.discount}
-                                    </div>
-                                    )}
-                                    <h4 className="font-bold">{product.name}</h4>
+                                    <h4 className="font-bold text-sm">{product.name}</h4>
                                     <p className="text-sm text-gray-500">{product.price}</p>
                                 </div>
                                 </div>
@@ -140,6 +136,7 @@ const HeroSection = () => {
                         </Link>
                     </Popover>
                 ))}
+              </div>
             </div>
           ))}
         </div>
@@ -148,34 +145,33 @@ const HeroSection = () => {
       {/* Navigation Arrows */}
       <button
         onClick={scrollPrev}
-        className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 w-12 h-12 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-background transition-colors shadow-sm"
+        className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-background/60 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-background/80 transition-colors shadow-md"
       >
         <ChevronLeft className="h-5 w-5 text-foreground" />
       </button>
       <button
         onClick={scrollNext}
-        className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 w-12 h-12 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-background transition-colors shadow-sm"
+        className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-background/60 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-background/80 transition-colors shadow-md"
       >
         <ChevronRight className="h-5 w-5 text-foreground" />
       </button>
 
-      {/* Shop Now Link - Bottom Left */}
-      <div className="absolute bottom-12 left-6 md:left-12">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 sm:left-auto sm:right-auto sm:bottom-8 sm:left-8 flex flex-col items-center gap-4">
         <Link
           to="/shop"
-          className="text-sm text-white font-medium underline underline-offset-4 hover:text-[#5a5a5a] transition-colors"
+          className="text-sm text-white font-medium underline underline-offset-4 hover:text-opacity-80 transition-opacity"
         >
-          Shop Now
+          Shop All Products
         </Link>
       </div>
 
       {/* Dots */}
-      <div className="absolute bottom-12 right-1/2 translate-x-1/2 flex gap-x-3">
+      <div className="absolute bottom-20 sm:bottom-8 left-1/2 -translate-x-1/2 flex gap-x-3">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => scrollTo(index)}
-            className={`w-2.5 h-2.5 rounded-full ${selectedIndex === index ? 'bg-white' : 'bg-white/50'}`}
+            className={`w-2.5 h-2.5 rounded-full transition-colors ${selectedIndex === index ? 'bg-white' : 'bg-white/40 hover:bg-white/70'}`}
           />
         ))}
       </div>

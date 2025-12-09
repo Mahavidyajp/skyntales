@@ -1,32 +1,35 @@
-import skinCloseup from "@/assets/skin-closeup.jpg";
+import skinCloseup from '@/assets/skin-closeup.jpg';
+import ecoProduct from '@/assets/eco-product.jpg';
+import { Leaf } from 'lucide-react';
 
 const StatementSection = () => {
   return (
-    <section className="section-padding bg-background">
-      <div className="container-kanva">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-h1 md:text-display font-heading leading-tight">
-            <span className="inline-flex items-center flex-wrap justify-center gap-4">
-              <span className="italic">Refresh your skin,</span>
-              <span className="w-20 h-20 md:w-28 md:h-28 rounded-2xl overflow-hidden inline-block align-middle shadow-kanva-md">
-                <img
-                  src={skinCloseup}
-                  alt="Skin care"
-                  className="w-full h-full object-cover"
-                />
-              </span>
-              <span className="italic">love yourself,</span>
-            </span>
-            <br />
-            <span className="inline-flex items-center flex-wrap justify-center gap-4 mt-2">
-              <span className="italic">renew your glow.</span>
-              <svg className="w-16 h-16 md:w-20 md:h-20 text-sage inline-block" viewBox="0 0 100 100" fill="currentColor">
-                <path d="M50 10C30 30 20 50 20 70C20 85 35 95 50 95C65 95 80 85 80 70C80 50 70 30 50 10Z" opacity="0.3" />
-                <path d="M50 25C35 40 28 55 28 72C28 82 38 88 50 88C62 88 72 82 72 72C72 55 65 40 50 25Z" />
-              </svg>
-            </span>
-          </h2>
-        </div>
+    <section className="py-16 sm:py-24 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <p className="text-center text-4xl sm:text-5xl lg:text-6xl font-serif text-stone-800 leading-normal sm:leading-relaxed">
+          <span>Refresh your skin, </span>
+          <span className="inline-block relative w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 -rotate-6 align-middle mx-1 sm:mx-2">
+            <img
+              src={skinCloseup}
+              alt="Skin closeup"
+              className="rounded-xl object-cover w-full h-full border-2 sm:border-4 border-white shadow-lg"
+            />
+          </span>
+          <span>love yourself, </span>
+          <br className="sm:hidden" />
+          <span className="inline-block relative w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rotate-6 align-middle mx-1 sm:mx-2">
+            <img
+              src={ecoProduct}
+              alt="Eco product"
+              className="rounded-xl object-cover w-full h-full border-2 sm:border-4 border-white shadow-lg"
+            />
+          </span>
+          <br className="hidden lg:block" />
+          <span>renew your glow.</span>
+          <span className="inline-block text-green-600/50 rotate-12 align-bottom ml-1 sm:ml-2">
+             <Leaf className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20" strokeWidth={1} />
+          </span>
+        </p>
       </div>
     </section>
   );
