@@ -53,14 +53,14 @@ const Blog = () => {
       <Header />
       <main>
         {/* Header */}
-        <section className="pt-12 pb-8">
+        <section className="pt-32 pb-8">
           <div className="container-kanva text-center">
             <h1 className="text-5xl md:text-6xl font-heading italic">Blog</h1>
           </div>
         </section>
 
         {/* Blog Grid */}
-        <section className="pb-16 px-4 md:px-8 lg:px-16">
+        <section className="pb-36 px-4 md:px-8 lg:px-16">
           <div className="max-w-7xl mx-auto">
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {blogPosts.map((post) => (

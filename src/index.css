@@ -101,10 +101,14 @@
 
   html {
     scroll-behavior: smooth;
+    
+  width: 100%;
+  overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -114,19 +118,30 @@
 
 @layer components {
   .container-kanva {
-    @apply mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8;
+    @apply mx-auto max-w-[1440px] px-8;
   }
 
   .section-padding {
-    @apply py-16 md:py-24 lg:py-32;
+    @apply py-32;
   }
 
   .section-padding-sm {
-    @apply py-10 md:py-16;
+    @apply py-16;
   }
 
   .text-gradient {
     @apply bg-gradient-to-r from-sage to-primary bg-clip-text text-transparent;
+  }
+
+  /* Text Sizes */
+  .text-h1 {
+    @apply text-5xl font-bold;
+  }
+  .text-h2 {
+    @apply text-4xl font-bold;
+  }
+  .text-h3 {
+    @apply text-3xl font-bold;
   }
 
   /* Button Variants */
@@ -135,7 +150,7 @@
   }
 
   .btn-kanva-primary {
-    @apply btn-kanva bg-foreground text-background hover:-translate-y-0.5 hover:shadow-lg;
+    @apply btn-kanva bg-foreground text-background hover:-translate-y-1 hover:shadow-kanva-lg;
   }
 
   .btn-kanva-secondary {
@@ -148,7 +163,7 @@
 
   /* Card Styles */
   .card-kanva {
-    @apply rounded-2xl bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
+    @apply rounded-2xl bg-card p-6 shadow-kanva-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-kanva-md;
   }
 
   /* Product Card */
@@ -157,12 +172,11 @@
   }
 
   .product-card:hover {
-    @apply -translate-y-1 shadow-lg;
+    @apply -translate-y-2 shadow-kanva-lg;
   }
 
   /* Marquee Animation */
   .marquee {
-    @apply flex gap-8;
     animation: marquee 30s linear infinite;
   }
 
@@ -170,59 +184,361 @@
     animation-direction: reverse;
   }
 
-  @keyframes marquee {
+  @keyframes heroTextReveal {
     0% {
-      transform: translateX(0%);
+      opacity: 0;
+      transform: translateY(40px);
     }
     100% {
-      transform: translateX(-50%);
+      opacity: 1;
+      transform: translateY(0);
     }
   }
-
-  /* Feature Badge Ticker */
-  .ticker {
-    animation: ticker 40s linear infinite;
+  
+  .animate-hero-text {
+    animation: heroTextReveal 0.9s ease-out both;
   }
-
-  @keyframes ticker {
+  @keyframes mobileMenu {
     0% {
-      transform: translateX(0);
+      opacity: 0;
+      transform: translateY(-10px);
     }
     100% {
-      transform: translateX(-50%);
+      opacity: 1;
+      transform: translateY(0);
     }
   }
-
-  /* Fade In Animation */
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+  
+  .animate-mobile-menu {
+    animation: mobileMenu 0.35s ease-out both;
   }
-
-  @keyframes fadeIn {
+  @keyframes featureReveal {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .animate-feature-reveal {
+    animation: featureReveal 0.7s ease-out forwards;
+  }
+  @keyframes statementReveal {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
+  
+  .animate-statement-reveal {
+    animation: statementReveal 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+  
+  @keyframes statementFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+  }
+  
+  .statement-float {
+    animation: statementFloat 4s ease-in-out infinite;
+  }
+  
+  @keyframes leafPulse {
+    0% { transform: scale(1) rotate(12deg); }
+    50% { transform: scale(1.1) rotate(12deg); }
+    100% { transform: scale(1) rotate(12deg); }
+  }
+  
+  .statement-leaf {
+    animation: leafPulse 3s ease-in-out infinite;
+  }
+  @keyframes productsReveal {
+    from {
+      opacity: 0;
+      transform: translateY(60px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .animate-products-reveal {
+    animation: productsReveal 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+  
+  @keyframes productFloatA {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  
+  @keyframes productFloatB {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  
+  @keyframes productFloatC {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .animate-float-0 { animation: productFloatA 6s ease-in-out infinite; }
+  .animate-float-1 { animation: productFloatB 8s ease-in-out infinite; }
+  .animate-float-2 { animation: productFloatC 7s ease-in-out infinite; }
+  
+  @keyframes productsFadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-products-tag {
+    animation: productsFadeUp 0.6s ease-out forwards;
+  }
+  
+  .animate-products-title {
+    animation: productsFadeUp 0.8s ease-out forwards;
+  }
+  
+  .animate-products-fade {
+    animation: productsFadeUp 0.9s ease-out forwards;
+  }
+  
+  .animate-products-button {
+    animation: productsFadeUp 1s ease-out forwards;
+  }
+  @keyframes ecoReveal {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-eco-reveal {
+    animation: ecoReveal 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+  
+  @keyframes ecoItem {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .animate-eco-item {
+    animation: ecoItem 0.6s ease-out forwards;
+  }
+  
+  @keyframes ecoImageZoom {
+    from {
+      transform: scale(1.12);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  .eco-image {
+    animation: ecoImageZoom 1.2s ease-out forwards;
+  }
+  @keyframes socialReveal {
+    from {
+      opacity: 0;
+      transform: translateY(60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-social-reveal {
+    animation: socialReveal 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+  
+  @keyframes socialCardReveal {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .animate-social-card {
+    animation: socialCardReveal 0.8s ease-out forwards;
+  }
+  
+  @keyframes socialImageZoom {
+    from {
+      transform: scale(1.15);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  .social-image {
+    animation: socialImageZoom 1.2s ease-out forwards;
+  }
+  @keyframes testimonialReveal {
+    from {
+      opacity: 0;
+      transform: translateY(60px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .animate-testimonial-reveal {
+    animation: testimonialReveal 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+  
+  @keyframes starPop {
+    0% {
+      opacity: 0;
+      transform: scale(0.5) rotate(-20deg);
+    }
+    70% {
+      opacity: 1;
+      transform: scale(1.15) rotate(5deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(0);
+    }
+  }
+  
+  .animate-star-pop {
+    animation: starPop 0.5s ease-out forwards;
+  }
+/* ✅ SCROLL REVEAL */
+@keyframes instagramReveal {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  /* Stagger Animation */
-  .stagger-1 { animation-delay: 0.1s; }
-  .stagger-2 { animation-delay: 0.2s; }
-  .stagger-3 { animation-delay: 0.3s; }
-  .stagger-4 { animation-delay: 0.4s; }
-  .stagger-5 { animation-delay: 0.5s; }
+.animate-instagram-reveal {
+  animation: instagramReveal 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
 
-  /* Image Hover Effect */
-  .img-hover {
-    @apply transition-transform duration-500;
+/* ✅ SMOOTH INFINITE MARQUEE */
+@keyframes instagramMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.instagram-marquee {
+  animation: instagramMarquee 45s linear infinite;
+}
+@keyframes newsletterReveal {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-newsletter-reveal {
+  animation: newsletterReveal 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes newsletterItemReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-newsletter-item {
+  animation: newsletterItemReveal 0.7s ease-out forwards;
+}
+
+@keyframes newsletterFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.newsletter-image {
+  animation: newsletterFloat 6s ease-in-out infinite;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.animate-reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+    
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
 
-  .img-hover:hover {
-    @apply scale-105;
+  /* Fade-In Animation */
+  .fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 

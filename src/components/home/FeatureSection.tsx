@@ -1,4 +1,4 @@
-<div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+
 import { Leaf, Rabbit, Award, Truck } from 'lucide-react';
 
 const features = [

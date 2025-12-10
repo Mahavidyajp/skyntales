@@ -28,7 +28,6 @@ import AdminFeedback from "./pages/admin/AdminFeedback";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminSupport from "./pages/admin/AdminSupport";
 import CustomCursor from "./components/ui/CustomCursor";
-import Footer from "./components/common/Footer";
 
 const queryClient = new QueryClient();
 
@@ -67,7 +66,6 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

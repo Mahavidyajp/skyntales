@@ -197,7 +197,7 @@ const About = () => {
         </section>
 
         {/* Sustainability & Quality Section */}
-        <section className="relative min-h-[60vh] bg-primary overflow-hidden">
+        <section className="relative min-h-[60vh] bg-black overflow-hidden">
           <div className="absolute inset-0">
             <img src={ecoProduct} alt="Sustainability" className="w-full h-full object-cover opacity-30" />
           </div>
@@ -237,10 +237,10 @@ const About = () => {
         </section>
 
         {/* Eco-Friendly Packaging Section */}
-        <section className="section-padding bg-background">
+        <section className="section-padding bg-background lg:pr-12">
           <div className="container-kanva">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="rounded-3xl overflow-hidden bg-secondary p-8">
+              <div className="rounded-3xl overflow-hidden lg:p-22">
                 <img src={product2} alt="Eco-friendly packaging" className="w-full h-auto rounded-2xl" />
               </div>
               <div>
@@ -255,7 +255,7 @@ const About = () => {
                 <div className="grid grid-cols-2 gap-4">
                   {packagingFeatures.map((feature) => (
                     <div key={feature.title} className="bg-secondary rounded-xl p-4">
-                      <feature.icon className="h-6 w-6 text-sage mb-3" strokeWidth={1.5} />
+                      <feature.icon className="h-12 w-12 text-sage mb-3" strokeWidth={1.5} />
                       <h4 className="font-heading font-medium mb-1">{feature.title}</h4>
                       <p className="text-sm text-muted-foreground">{feature.description}</p>
                     </div>

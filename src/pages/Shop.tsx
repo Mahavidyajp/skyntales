@@ -271,7 +271,7 @@ const Shop = () => {
         </section>
 
  {/* Category Cards */}
-<section className="container-kanva pb-16 mx-40">
+<section className="container-kanva pb-16 lg:mx-40">
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
     {categoryCards.map((category) => (
       <Link
